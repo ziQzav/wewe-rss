@@ -9,8 +9,8 @@ services:
       MYSQL_ROOT_PASSWORD: 123456
       TZ: 'Asia/Shanghai'
       MYSQL_DATABASE: 'wewe-rss'
-    # ports:
-    #   - 13306:3306
+      expose:
+        - 13306
     volumes:
       - db_data:/var/lib/mysql
     healthcheck:
@@ -21,8 +21,8 @@ services:
 
   app:
     image: cooderl/wewe-rss:latest
-    ports:
-      - 4000:4000
+    expose:
+      - 4000
     depends_on:
       db:
         condition: service_healthy
